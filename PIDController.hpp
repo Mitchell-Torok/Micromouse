@@ -21,12 +21,12 @@ public:
         integral = integral + error * dt;
         derivative = (error - prev_error) / dt;
         output =  kp * error + ki * integral + kd * derivative;
-        Serial.print("Error: ");
-        Serial.print(error);
-        Serial.print(", derivative: ");
-        Serial.print(derivative);
-        Serial.print(", Output: ");
-        Serial.println(output);
+        // Serial.print("Error: ");
+        //Serial.println(error);
+        // Serial.print(", derivative: ");
+        // Serial.print(derivative);
+        // Serial.print(", Output: ");
+        //Serial.println(output);
 
         prev_error = error;
 
@@ -50,6 +50,8 @@ public:
     // Target is the setpoint value.
     void zeroAndSetTarget(float zero, float target) {
         prev_time = micros();
+        integral = 0;
+        prev_error = 0;
         zero_ref = zero;
         setpoint = target;
     }
